@@ -16,6 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ChooseText" />
+        <activity android:name=".AddWords" />
+        <activity android:name=".DisplayText"></activity>
     </application>
 
 </manifest>
