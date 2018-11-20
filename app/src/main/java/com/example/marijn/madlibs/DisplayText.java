@@ -3,6 +3,7 @@ package com.example.marijn.madlibs;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
@@ -16,8 +17,8 @@ public class DisplayText extends AppCompatActivity {
         // Get the full story
         String fullStory = getIntent().getExtras().getString("FullStory");
 
-        // Display the full story
-        ((TextView) findViewById(R.id.storyText)).setText(fullStory);
+        // Display the full story and make it Html format
+        ((TextView) findViewById(R.id.storyText)).setText(Html.fromHtml(fullStory));
     }
 
     public void createAnotherStory(View view) {

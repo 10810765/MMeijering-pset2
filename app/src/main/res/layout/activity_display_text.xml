@@ -44,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="18dp"
+        android:elevation="0dp"
         android:onClick="createAnotherStory"
         android:text="CREATE ANOTHER STORY"
         android:textSize="18sp"
