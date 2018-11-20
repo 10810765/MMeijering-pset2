@@ -12,14 +12,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
 
-        Button startBtn = findViewById(R.id.startButton);
-
-        startBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ChooseText.class));
-            }
-        });
+    public void startClicked(View view) {
+        startActivity(new Intent(MainActivity.this, ChooseText.class));
     }
 }
 
