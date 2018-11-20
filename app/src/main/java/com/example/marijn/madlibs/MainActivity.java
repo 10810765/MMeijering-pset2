@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    // Restart button to create another Mad Libs story
     public void startClicked(View view) {
         startActivity(new Intent(MainActivity.this, ChooseText.class));
     }

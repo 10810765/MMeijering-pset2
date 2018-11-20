@@ -48,7 +48,7 @@ public class AddWords extends AppCompatActivity {
         } else {
             story = (Story) savedInstanceState.getSerializable("story");
             setText();
-            isCountZero();
+            isAllFilled();
         }
     }
 
@@ -73,7 +73,7 @@ public class AddWords extends AppCompatActivity {
         } else {
             story.fillInPlaceholder(getWord());
             setText();
-            isCountZero();
+            isAllFilled();
         }
     }
 
@@ -85,8 +85,8 @@ public class AddWords extends AppCompatActivity {
     }
 
     // Check if all words have been filled in
-    private void isCountZero() {
-        if (story.getPlaceholderRemainingCount() == 0) {
+    private void isAllFilled() {
+        if (story.isFilledIn() == true) {
             filledInWord.setVisibility(View.INVISIBLE);
             confirmBtn.setVisibility(View.INVISIBLE);
             whatText.setVisibility(View.INVISIBLE);
