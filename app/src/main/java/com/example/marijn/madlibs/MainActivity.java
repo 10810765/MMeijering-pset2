@@ -4,8 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
+/**
+ * Marijn Meijering <m.h.j.meijering@uva.nl>
+ * 10810765 Universiteit van Amsterdam
+ * Minor Programmeren 17/12/2018
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -14,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    // Restart button to create another Mad Libs story
+    // Start creating a story and go to the next activity
     public void startClicked(View view) {
         startActivity(new Intent(MainActivity.this, ChooseText.class));
     }

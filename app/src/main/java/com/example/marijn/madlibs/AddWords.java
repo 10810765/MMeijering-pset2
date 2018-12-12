@@ -3,24 +3,26 @@ package com.example.marijn.madlibs;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.InputStream;
 
+/**
+ * Marijn Meijering <m.h.j.meijering@uva.nl>
+ * 10810765 Universiteit van Amsterdam
+ * Minor Programmeren 17/12/2018
+ */
 public class AddWords extends AppCompatActivity {
 
     private Story story;
     private EditText filledInWord;
-    private TextView wordCount;
-    private TextView title;
-    private Button confirmBtn;
-    private Button showStoryBtn;
-    private TextView whatText;
-
+    private TextView wordCount, title, whichText;
+    private Button confirmBtn, showStoryBtn;
+    private String storyName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +34,16 @@ public class AddWords extends AppCompatActivity {
         title = findViewById(R.id.titleText);
         confirmBtn = findViewById(R.id.confirmWord);
         showStoryBtn = findViewById(R.id.nextButton);
-        whatText = findViewById(R.id.chosenText);
+        whichText = findViewById(R.id.chosenText);
+
+        // Get the name of the chosen story
+        storyName = getIntent().getExtras().getString("clicked_story");
 
         // Set the story chosen by the user
         getStory();
 
         // Tell the user what text he's chosen
-        whatText.setText("You have chosen the text: " + getIntent().getExtras().getString("clicked_story"));
+        whichText.setText("You have chosen the text: " + storyName);
 
         // Set the title of the activity_add_words view
         title.setText("Fill in " + story.getPlaceholderCount() + " words to complete the story!");
@@ -55,8 +60,6 @@ public class AddWords extends AppCompatActivity {
 
     // Get the user chosen story to be used
     public Story getStory() {
-        // Get the name of the chosen story
-        String storyName = getIntent().getExtras().getString("clicked_story");
         InputStream storyTxt = getResources().openRawResource(getResources().getIdentifier(
                 storyName, "raw", getPackageName()));
         return story = new Story(storyTxt);
@@ -70,6 +73,7 @@ public class AddWords extends AppCompatActivity {
     // Save the filled in words from user
     public void setWord(View view) {
         if (filledInWord.getText().toString().equals("")) {
+            Toast.makeText(this, "The textfield cannot be empty!", Toast.LENGTH_SHORT).show();
             return;
         } else {
             story.fillInPlaceholder(getWord());
@@ -90,7 +94,7 @@ public class AddWords extends AppCompatActivity {
         if (story.isFilledIn() == true) {
             filledInWord.setVisibility(View.INVISIBLE);
             confirmBtn.setVisibility(View.INVISIBLE);
-            whatText.setVisibility(View.INVISIBLE);
+            whichText.setVisibility(View.INVISIBLE);
             showStoryBtn.setVisibility(View.VISIBLE);
         }
     }
@@ -103,7 +107,7 @@ public class AddWords extends AppCompatActivity {
     }
 
     public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState); // always call super
+        super.onSaveInstanceState(outState);
         outState.putSerializable("story", story);
 
     }

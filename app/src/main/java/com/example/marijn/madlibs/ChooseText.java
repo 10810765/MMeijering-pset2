@@ -1,28 +1,25 @@
 package com.example.marijn.madlibs;
 
-import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Marijn Meijering <m.h.j.meijering@uva.nl>
+ * 10810765 Universiteit van Amsterdam
+ * Minor Programmeren 17/12/2018
+ */
 public class ChooseText extends AppCompatActivity {
-
 
     // Create a list with all stories
     String[] allTexts = {"madlib0_simple", "madlib1_tarzan", "madlib2_university", "madlib3_clothes", "madlib4_dance" };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +41,6 @@ public class ChooseText extends AppCompatActivity {
 
         // Set on click listener to save the chosen story
         storyList.setOnItemClickListener(new ListItemClickListener());
-
         }
 
     private class ListItemClickListener implements AdapterView.OnItemClickListener {
