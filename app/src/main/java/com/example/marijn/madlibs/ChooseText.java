@@ -26,29 +26,32 @@ public class ChooseText extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_text);
 
+        // Get the ListView ID
         ListView storyList = findViewById(R.id.listView);
 
         // Populate a List from Array elements
         // Source: https://android--code.blogspot.com/2015/08/android-gridview-add-item.html
-        final List<String> textList = new ArrayList<>(Arrays.asList(allTexts));
+        List<String> textList = new ArrayList<>(Arrays.asList(allTexts));
 
-        // Create a new ArrayAdapter
-        final ArrayAdapter<String> gridViewArrayAdapter = new ArrayAdapter<>
+        // Instantiate the adapter for the texts
+        ArrayAdapter<String> textAdapter = new ArrayAdapter<>
                 (ChooseText.this,android.R.layout.simple_list_item_1, textList);
 
-        // Data bind GridView with ArrayAdapter (String Array elements)
-        storyList.setAdapter(gridViewArrayAdapter);
+        // Attach the adapter to the list view
+        storyList.setAdapter(textAdapter);
 
         // Set on click listener to save the chosen story
         storyList.setOnItemClickListener(new ListItemClickListener());
-        }
+    }
 
+    // Create an on text clicked listener
     private class ListItemClickListener implements AdapterView.OnItemClickListener {
-
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            // Get the string of the clicked item in the list view
             String clickedStory = (String) parent.getItemAtPosition(position);
 
+            // Pass the chosen story to the next activity
             Intent intent = new Intent(ChooseText.this, AddWords.class);
             intent.putExtra("clicked_story", clickedStory);
             startActivity(intent);

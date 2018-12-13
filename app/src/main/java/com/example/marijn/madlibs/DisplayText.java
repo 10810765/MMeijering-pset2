@@ -22,14 +22,16 @@ public class DisplayText extends AppCompatActivity {
         // Get the full story
         String fullStory = getIntent().getExtras().getString("FullStory");
 
-        // Display the full story and make it Html format
+        // Treat the story as html and display it
         ((TextView) findViewById(R.id.storyText)).setText(Html.fromHtml(fullStory));
     }
 
+    // On button pressed, go back to the ChooseText activity to do another
     public void createAnotherStory(View view) {
         startActivity(new Intent(DisplayText.this, ChooseText.class));
     }
 
+    // Go back to main activity instead of add words on back pressed
     @Override
     public void onBackPressed() {
         startActivity(new Intent(DisplayText.this, MainActivity.class));

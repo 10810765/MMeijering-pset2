@@ -18,7 +18,10 @@ import java.io.InputStream;
  */
 public class AddWords extends AppCompatActivity {
 
+    // Variable used to hold the story
     private Story story;
+
+    // Various variables
     private EditText filledInWord;
     private TextView wordCount, title, whichText;
     private Button confirmBtn, showStoryBtn;
@@ -29,6 +32,7 @@ public class AddWords extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_words);
 
+        // Get various ID's
         filledInWord = findViewById(R.id.enterWord);
         wordCount = findViewById(R.id.wordsLeft);
         title = findViewById(R.id.titleText);
@@ -48,6 +52,7 @@ public class AddWords extends AppCompatActivity {
         // Set the title of the activity_add_words view
         title.setText("Fill in " + story.getPlaceholderCount() + " words to complete the story!");
 
+        // If there is no saved state set the text, else restore the saved state
         if (savedInstanceState == null) {
             setText();
             return;
@@ -58,44 +63,47 @@ public class AddWords extends AppCompatActivity {
         }
     }
 
-    // Get the user chosen story to be used
+    // Get the story (text) chosen by the user
     public Story getStory() {
         InputStream storyTxt = getResources().openRawResource(getResources().getIdentifier(
                 storyName, "raw", getPackageName()));
         return story = new Story(storyTxt);
     }
 
-    // Get the filled in word from user
+    // Retrieve the word the user typed in
     public String getWord() {
         return String.valueOf(filledInWord.getText());
     }
 
-    // Save the filled in words from user
+    // Save the word the user typed in
     public void setWord(View view) {
         if (filledInWord.getText().toString().equals("")) {
             Toast.makeText(this, "The textfield cannot be empty!", Toast.LENGTH_SHORT).show();
             return;
         } else {
             story.fillInPlaceholder(getWord());
+            // Set text fields
             setText();
+            // Check if all words have been filled in
             isAllFilled();
         }
     }
 
-    // Set the text of various textViews
+    // Set the text of various text fields
     private void setText(){
         filledInWord.getText().clear();
         filledInWord.setHint("Type a/an " + story.getNextPlaceholder());
         wordCount.setText(story.getPlaceholderRemainingCount() + " word(s) left");
     }
 
-    // Check if all words have been filled in
+    // Check if all words in the text have been filled
     private void isAllFilled() {
         if (story.isFilledIn() == true) {
             filledInWord.setVisibility(View.INVISIBLE);
             confirmBtn.setVisibility(View.INVISIBLE);
             whichText.setVisibility(View.INVISIBLE);
             showStoryBtn.setVisibility(View.VISIBLE);
+            title.setText("You have completed the story!");
         }
     }
 
@@ -106,6 +114,7 @@ public class AddWords extends AppCompatActivity {
         startActivity(showStory);
     }
 
+    // Save the state of the current story
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putSerializable("story", story);

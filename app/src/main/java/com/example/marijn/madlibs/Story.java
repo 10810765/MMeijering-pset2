@@ -22,6 +22,7 @@ package com.example.marijn.madlibs;
 import java.io.*;
 import java.util.*;
 
+// Given .java file for exercise
 public class Story implements Serializable {
     private String text;                 // text of the story
     private List<String> placeholders;   // list of placeholders to fill in

@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">MadLibs</string>
+    <string name="welcome_to_mad_libs_i_will_ask_you_to_fill_in_words_to_complete_a_story_you_won_t_be_able_to_see_the_whole_story_until_you_are_done_filling_in_all_the_missing_words_that_s_part_of_the_fun_click_below_to_get_started">Welcome to Mad Libs! I will ask you to fill in words to complete a story. You won\'t be able to see the whole story until you are done filling in all the missing words. That\'s part of the fun. Click below to get started!</string>
+    <string name="get_started">Get Started!</string>
+    <string name="todo">TODO</string>
+    <string name="your_mad_lib_story">Your Mad Lib Story!</string>
+    <string name="story_goes_here">Story goes here!</string>
+    <string name="create_another_story">CREATE ANOTHER STORY</string>
+    <string name="choose_a_text">Choose a text</string>
+    <string name="title">title</string>
+    <string name="confirm">Confirm</string>
+    <string name="wordcount">wordCount</string>
+    <string name="show_story">Show Story!</string>
+    <string name="chosentext">ChosenText</string>
+    <string name="word">word</string>
 </resources>
