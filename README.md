@@ -5,6 +5,11 @@ This course is part of the minor programming at the UvA.
 
 By: Marijn Meijering - 10810765
 
+*Notes:*
+* The textfield can never be empty
+* Your words will be **bold** in the final text
+
+
 ![App1 MadLibs](https://github.com/10810765/MMeijering-pset2/blob/master/doc/MadLibs_1.png)
 ![App2 MadLibs](https://github.com/10810765/MMeijering-pset2/blob/master/doc/MadLibs_2.png)
 ![App3 MadLibs](https://github.com/10810765/MMeijering-pset2/blob/master/doc/MadLibs_3.png)
